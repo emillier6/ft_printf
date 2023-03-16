@@ -6,7 +6,7 @@
 /*   By: emillier <emillier@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:00:07 by emillier          #+#    #+#             */
-/*   Updated: 2023/02/16 20:12:59 by emillier         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:46:49 by emillier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,6 @@
 
 int convers_c(int c, int *bcount);
 int convers_s(char *str, int *bcount);
+int	convers_di(int num, int *bcount);
+int	convers_uxX(unsigned int num, int *bcount, int opt, int bas);
 #endif
