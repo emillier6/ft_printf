@@ -6,13 +6,13 @@
 /*   By: emillier <emillier@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 19:33:29 by emillier          #+#    #+#             */
-/*   Updated: 2023/03/16 16:52:21 by emillier         ###   ########.fr       */
+/*   Updated: 2023/04/30 15:06:29 by emillier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int convers_di(int num, int *bcount)
+int	convers_di(int num, int *bcount)
 {
 	if (num == INT_MIN)
 	{
@@ -23,19 +23,19 @@ int convers_di(int num, int *bcount)
 	{
 		if (num < 0)
 		{
-			if(convers_c('-', bcount) == -1)
+			if (convers_c('-', bcount) == -1)
 				return (-1);
 			num *= -1;
 		}
-		if (convers_uxX(num, bcount) == -1)
+		if (convers_ux_xup(num, bcount, 0, 10) == -1)
 			return (-1);
 	}
 	return (*bcount);
 }
 
-int convers_uxX(unsigned int num, int *bcount, int opt, int bas)
+int	convers_ux_xup(unsigned int num, int *bcount, int opt, unsigned int bas)
 {
-	char *base;
+	char	*base;
 
 	if (opt == 0)
 		base = B10;
@@ -43,12 +43,33 @@ int convers_uxX(unsigned int num, int *bcount, int opt, int bas)
 		base = B16;
 	if (opt == 2)
 		base = X16;
-
 	if (num >= bas)
 	{
-		if (convers_uxX(num / bas, bcount, opt, bas) == -1)
+		if (convers_ux_xup(num / bas, bcount, opt, bas) == -1)
 			return (-1);
 	}
 	if (convers_c(base[num % bas], bcount) == -1)
 		return (-1);
+	return (*bcount);
+}
+
+int	showptr(unsigned long n, int *bcount)
+{
+	if (n >= 16)
+	{
+		if (showptr(n / 16, bcount) == -1)
+			return (-1);
+	}
+	if (convers_c(B16[n % 16], bcount) == -1)
+		return (-1);
+	return (*bcount);
+}
+
+int	convers_p(unsigned long n, int *bcount)
+{
+	if (convers_s("0x", bcount) == -1)
+		return (-1);
+	if (showptr(n, bcount) == -1)
+		return (-1);
+	return (*bcount);
 }

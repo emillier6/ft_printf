@@ -6,12 +6,11 @@
 /*   By: emillier <emillier@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:04:03 by emillier          #+#    #+#             */
-/*   Updated: 2023/02/16 19:29:57 by emillier         ###   ########.fr       */
+/*   Updated: 2023/04/30 15:14:22 by emillier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	convers_c(int c, int *bcount)
 {
@@ -21,9 +20,9 @@ int	convers_c(int c, int *bcount)
 	return (*bcount);
 }
 
-int convers_s(char *str, int *bcount)
+int	convers_s(char *str, int *bcount)
 {
-	int i;
+	int	i;
 
 	if (!str)
 		str = "(null)";
