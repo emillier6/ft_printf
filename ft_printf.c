@@ -6,7 +6,7 @@
 /*   By: emillier <emillier@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 15:11:55 by emillier          #+#    #+#             */
-/*   Updated: 2023/04/30 14:44:00 by emillier         ###   ########.fr       */
+/*   Updated: 2023/05/10 19:26:29 by emillier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_printf(char const *str, ...)
 	i = 0;
 	res = 0;
 	va_start(arg, str);
-	while (str[i])
+	while (res != -1 && str[i])
 	{
 		if (str[i] == '%')
 		{
